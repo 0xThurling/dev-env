@@ -1,6 +1,9 @@
 services:
   doge-local-dev-environment:
     container_name: doge-local-dev-environment
+    # NOTE: These options keep the container open for development
+    stdin_open: true
+    tty: true
     build:
       dockerfile: Dockerfile
       context: ./dev-env

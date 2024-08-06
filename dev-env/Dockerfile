@@ -4,6 +4,8 @@ FROM ubuntu:24.04
 # Get the packages and update the packages
 RUN apt-get update && apt-get install -y \
   curl \
+  zsh \
+  git \
   build-essential \
   && rm -rf /var/lib/apt/lists/*
 
@@ -13,7 +15,7 @@ RUN apt-get update && apt-get install -y \
 # - Rust
 # - JavaScript/TypeScript - eww
 # - Zig
-# - C/C++
+# - Go
 
 
 # Install Rust using rustup
@@ -21,4 +23,9 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 ENV PATH="/root/.cargo/bin:${PATH}"
 
-RUN rustc --version
+# Set Zsh as the default shell for the root user
+RUN chsh -s $(which zsh) root
+
+WORKDIR /root
+
+CMD [ "zsh" ]

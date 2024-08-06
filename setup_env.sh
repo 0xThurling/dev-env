@@ -15,6 +15,12 @@ main() {
 		echo "Mount doesn't exist. Creating..."
 		mkdir -p "dev-env-mount"
 	fi
+
+	echo "Enter your GitHub name: "
+	read github_name
+
+	echo "Enter your GitHub email: "
+	read github_email
 }
 
 #execute main function

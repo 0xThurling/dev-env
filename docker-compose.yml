@@ -3,4 +3,4 @@ services:
     container_name: doge-local-dev-environment
     build:
       dockerfile: Dockerfile
-      context: ../
+      context: ./dev-env

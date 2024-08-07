@@ -1,3 +1,5 @@
 dev-env-mount/*
+dev-env-config/*
 
 docker-compose.yml
+

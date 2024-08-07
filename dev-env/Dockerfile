@@ -28,4 +28,12 @@ RUN chsh -s $(which zsh) root
 
 WORKDIR /root
 
+# Accept build arguments for Git configuration
+ARG GIT_USER_NAME
+ARG GIT_USER_EMAIL
+
+# Configure Git with the provided user name and email
+RUN git config --global user.name "$GIT_USER_NAME" \
+  && git config --global user.email "$GIT_USER_EMAIL"
+
 CMD [ "zsh" ]

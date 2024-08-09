@@ -16,6 +16,11 @@ main() {
 		mkdir -p "dev-env-mount"
 	fi
 
+	if [[ ! -d "./dev-env-config" ]]; then
+		echo "Config doesn't exist. Creating..."
+		mkdir -p "dev-env-config"
+	fi
+
 	if [[ ! -f "./docker-compose.yml" ]]; then
 		cp ./docker-compose.setup.yml ./docker-compose.yml
 	else
@@ -35,6 +40,10 @@ main() {
 	sed -i '' "s/{GIT_USER_EMAIL}/$github_email/g" "./docker-compose.yml"
 
 	docker compose build --no-cache doge-local-dev-environment
+
+	docker compose up doge-local-dev-environment -d
+
+	cd ./dev-env-mount/
 }
 
 #execute main function

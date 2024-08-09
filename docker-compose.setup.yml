@@ -4,6 +4,12 @@ services:
     # NOTE: These options keep the container open for development
     stdin_open: true
     tty: true
+    command: /bin/zsh
+    volumes:
+      - ./dev-env-config/id_personal:/root/.ssh/id_rsa:ro
+      - ./dev-env-config/id_personal.pub:/root/.ssh/id_rsa.pub:ro
+      - ./dev-env-config/config:/root/.ssh/config:ro
+      - ./dev-env-mount/:/root/dev/
     build:
       dockerfile: Dockerfile
       context: ./dev-env
